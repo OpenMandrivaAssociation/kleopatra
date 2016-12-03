@@ -39,7 +39,7 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_kde5_bindir}/kleopatra
 %{_kde5_bindir}/kwatchgnupg
 %{_qt5_plugindir}/kcm_kleopatra.so
-%{_kde5_datadir}/appdata/org.kde.kleopatra.appdata.xml
+%{_kde5_datadir}/metainfo/org.kde.kleopatra.appdata.xml
 %{_kde5_datadir}/applications/kleopatra_import.desktop
 %{_kde5_datadir}/applications/org.kde.kleopatra.desktop
 %{_iconsdir}/*/*/*/*
