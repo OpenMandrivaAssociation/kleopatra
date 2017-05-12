@@ -8,27 +8,32 @@ Group:		Graphical desktop/KDE
 Source0:	http://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
 URL:		https://www.kde.org/
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(KF5Codecs)
-BuildRequires:	cmake(KF5DBusAddons)
 BuildRequires:	cmake(KF5KCMUtils)
+BuildRequires:	cmake(KF5WidgetsAddons)
+BuildRequires:	cmake(KF5ConfigWidgets)
+BuildRequires:	cmake(KF5CoreAddons)
+BuildRequires:	cmake(KF5Codecs)
 BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5I18n)
 BuildRequires:	cmake(KF5IconThemes)
-BuildRequires:	cmake(KF5Notifications)
+BuildRequires:	cmake(KF5ItemModels)
 BuildRequires:	cmake(KF5XmlGui)
 BuildRequires:	cmake(KF5WindowSystem)
-BuildRequires:	cmake(KF5TextWidgets)
 BuildRequires:	cmake(KF5DocTools)
-
-# Kdepimlibs packages
+BuildRequires:	cmake(KF5DBusAddons)
+BuildRequires:	cmake(Gpgmepp)
+BuildRequires:	cmake(QGpgme)
 BuildRequires:	cmake(KF5Libkleo)
 BuildRequires:	cmake(KF5Mime)
-BuildRequires:	cmake(KF5Gpgmepp)
+BuildRequires:	cmake(KF5Notifications)
+BuildRequires:	cmake(KF5TextWidgets)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
-BuildRequires:	pkgconfig(Qt5Test) 
+BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5PrintSupport)
 BuildRequires:	boost-devel
+BuildRequires:	libassuan-devel
 Obsoletes:	%{name}-handbook < 3:16.08.3-1
 
 %description
