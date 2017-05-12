@@ -34,21 +34,22 @@ Obsoletes:	%{name}-handbook < 3:16.08.3-1
 %description
 Certificate manager and GUI for OpenPGP and CMS cryptography.
 
-%files
+%files -f %{name}.lang
 %{_sysconfdir}/xdg/kleopatra.categories
-%{_kde5_bindir}/kleopatra
-%{_kde5_bindir}/kwatchgnupg
+%{_sysconfdir}/xdg/kleopatra.renamecategories
+%{_bindir}/kleopatra
+%{_bindir}/kwatchgnupg
 %{_qt5_plugindir}/kcm_kleopatra.so
-%{_kde5_datadir}/metainfo/org.kde.kleopatra.appdata.xml
-%{_kde5_datadir}/applications/kleopatra_import.desktop
-%{_kde5_datadir}/applications/org.kde.kleopatra.desktop
+%{_datadir}/metainfo/org.kde.kleopatra.appdata.xml
+%{_datadir}/applications/kleopatra_import.desktop
+%{_datadir}/applications/org.kde.kleopatra.desktop
 %{_iconsdir}/*/*/*/*
-%{_kde5_datadir}/kconf_update/*
-%{_kde5_datadir}/kleopatra
-%{_kde5_datadir}/kservices5/*.desktop
-%{_kde5_datadir}/kwatchgnupg
-%{_kde5_docdir}/HTML/en/kleopatra
-%{_kde5_docdir}/HTML/en/kwatchgnupg
+%{_datadir}/kconf_update/*
+%{_datadir}/kleopatra
+%{_datadir}/kservices5/*.desktop
+%{_datadir}/kwatchgnupg
+%{_docdir}/HTML/*/kleopatra
+%{_docdir}/HTML/*/kwatchgnupg
 
 #--------------------------------------------------------------------
 
@@ -115,5 +116,5 @@ based on %{name}.
 %install
 %ninja_install -C build
 
-#find_lang --all %{name}5
+%find_lang --all %{name}
 
