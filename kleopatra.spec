@@ -1,6 +1,6 @@
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	16.08.3
+Version:	17.04.0
 Epoch:		3
 Release:	1
 License:	GPLv2+
@@ -52,54 +52,55 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 
 #--------------------------------------------------------------------
 
-%define kf5kleopatraclientcore_major 1
-%define libkleopatraclientcore %mklibname kf5kleopatraclientcore %{kf5kleopatraclientcore_major}
+%define kleopatraclientcore_major 1
+%define libkleopatraclientcore %mklibname kleopatraclientcore %{kleopatraclientcore_major}
 
-%package -n %libkleopatraclientcore
+%package -n %{libkleopatraclientcore}
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Group:		System/Libraries
+Obsoletes:	%{mklibname kf5kleopatraclientcore 1} < 3:17.04.0
 
-
-%description -n %libkleopatraclientcore
+%description -n %{libkleopatraclientcore}
 Certificate manager and GUI for OpenPGP and CMS cryptography.
 
-%files -n %libkleopatraclientcore
-%_kde5_libdir/libkleopatraclientcore.so.%{kf5kleopatraclientcore_major}*
+%files -n %{libkleopatraclientcore}
+%_libdir/libkleopatraclientcore.so.%{kleopatraclientcore_major}*
 
 #--------------------------------------------------------------------
 
-%define kf5kleopatraclientgui_major 1
-%define libkleopatraclientgui %mklibname kf5kleopatraclientgui %{kf5kleopatraclientgui_major}
+%define kleopatraclientgui_major 1
+%define libkleopatraclientgui %mklibname kleopatraclientgui %{kleopatraclientgui_major}
 
-%package -n %libkleopatraclientgui
+%package -n %{libkleopatraclientgui}
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Group:		System/Libraries
+Obsoletes:	%{mklibname kf5kleopatraclientgui 1} < 3:17.04.0
 
-
-%description -n %libkleopatraclientgui
+%description -n %{libkleopatraclientgui}
 Certificate manager and GUI for OpenPGP and CMS cryptography.
 
-%files -n %libkleopatraclientgui
-%_kde5_libdir/libkleopatraclientgui.so.%{kf5kleopatraclientgui_major}*
+%files -n %{libkleopatraclientgui}
+%{_libdir}/libkleopatraclientgui.so.%{kleopatraclientgui_major}*
 
 #--------------------------------------------------------------------
 
-%define kf5libkleopatra_devel %mklibname kf5libkleopatra -d
+%define libkleopatra_devel %mklibname libkleopatra -d
 
-%package -n %kf5libkleopatra_devel
+%package -n %{libkleopatra_devel}
 
-Summary:	Devel stuff for %name
+Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
-Requires:	%libkleopatraclientcore = %{EVRD}
-Requires:	%libkleopatraclientgui = %{EVRD}
-Provides:	%name-devel = %{EVRD}
+Requires:	%{libkleopatraclientcore} = %{EVRD}
+Requires:	%{libkleopatraclientgui} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+Obsoletes:	%{mklibname kf5libkleopatra -d} < 3:17.04.0
 
-%description -n %kf5libkleopatra_devel
+%description -n %{libkleopatra_devel}
 This package contains header files needed if you wish to build applications
-based on %name.
+based on %{name}.
 
-%files -n %kf5libkleopatra_devel
-%{_kde5_libdir}/*.so
+%files -n %{libkleopatra_devel}
+%{_libdir}/*.so
 
 #--------------------------------------------------------------------
 
