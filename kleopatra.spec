@@ -34,7 +34,7 @@ Obsoletes:	%{name}-handbook < 3:16.08.3-1
 %description
 Certificate manager and GUI for OpenPGP and CMS cryptography.
 
-%files -f %{name}.lang
+%files -f all.lang
 %{_sysconfdir}/xdg/kleopatra.categories
 %{_sysconfdir}/xdg/kleopatra.renamecategories
 %{_bindir}/kleopatra
@@ -116,5 +116,7 @@ based on %{name}.
 %install
 %ninja_install -C build
 
-%find_lang --all %{name}
+%find_lang %{name}
+%find_lang kwatchgnupg
 
+cat *.lang >all.lang
