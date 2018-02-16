@@ -1,6 +1,6 @@
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	17.12.1
+Version:	 17.12.2
 Epoch:		3
 Release:	1
 License:	GPLv2+

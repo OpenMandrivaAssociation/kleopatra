@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   kleopatra-17.12.1.tar.xz: c2d2f800291a92e227fdc34a7ddfaaf7e39d5386
+sources:
+  kleopatra-17.12.2.tar.xz: 557f09665fc00184b0b5bf856f2f1550fcbae13d
