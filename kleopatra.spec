@@ -1,6 +1,6 @@
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	 18.04.2
+Version:	 18.04.3
 Epoch:		3
 Release:	1
 License:	GPLv2+
