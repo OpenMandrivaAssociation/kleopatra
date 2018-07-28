@@ -1,11 +1,12 @@
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	 18.04.3
-Epoch:		3
+Version:	18.07.80
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
-Source0:	http://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
 URL:		https://www.kde.org/
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5KCMUtils)
