@@ -3,7 +3,7 @@
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
 Version:	19.04.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
@@ -100,6 +100,7 @@ Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
 Requires:	%{libkleopatraclientcore} = %{EVRD}
 Requires:	%{libkleopatraclientgui} = %{EVRD}
+Requires:	%{name} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
 Obsoletes:	%{mklibname kf5libkleopatra -d} < 3:17.04.0
 
@@ -113,8 +114,7 @@ based on %{name}.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 %cmake_kde5
 
 %build
