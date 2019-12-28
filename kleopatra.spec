@@ -127,7 +127,3 @@ based on %{name}.
 %find_lang kwatchgnupg
 
 cat *.lang >all.lang
-
-strip --strip-unneeded %{buildroot}%{_libdir}/*.so* \
-	%{buildroot}%{_libdir}/qt5/plugins/*.so \
-	%{buildroot}%{_bindir}/*
