@@ -2,11 +2,11 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	19.11.90
+Version:	19.12.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
-Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 URL:		https://www.kde.org/
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5KCMUtils)
@@ -127,3 +127,7 @@ based on %{name}.
 %find_lang kwatchgnupg
 
 cat *.lang >all.lang
+
+strip --strip-unneeded %{buildroot}%{_libdir}/*.so* \
+	%{buildroot}%{_libdir}/qt5/plugins/*.so \
+	%{buildroot}%{_bindir}/*
