@@ -7,6 +7,7 @@ Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Patch0:		kleopatra-20.03.90-qt-5.15.patch
 URL:		https://www.kde.org/
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5KCMUtils)
