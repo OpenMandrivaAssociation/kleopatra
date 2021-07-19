@@ -2,7 +2,7 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	21.04.2
+Version:	21.07.80
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -46,7 +46,11 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_datadir}/qlogging-categories5/kleopatra.renamecategories
 %{_bindir}/kleopatra
 %{_bindir}/kwatchgnupg
-%{_qt5_plugindir}/kcm_kleopatra.so
+%{_qt5_plugindir}/pim/kcms/kleopatra/kleopatra_config_gnupgsystem.so
+%{_datadir}/kservices5/ServiceMenus/kleopatra_decryptverifyfiles.desktop
+%{_datadir}/kservices5/ServiceMenus/kleopatra_decryptverifyfolders.desktop
+%{_datadir}/kservices5/ServiceMenus/kleopatra_signencryptfiles.desktop
+%{_datadir}/kservices5/ServiceMenus/kleopatra_signencryptfolders.desktop
 %{_datadir}/metainfo/org.kde.kleopatra.appdata.xml
 %{_datadir}/applications/kleopatra_import.desktop
 %{_datadir}/applications/org.kde.kleopatra.desktop
