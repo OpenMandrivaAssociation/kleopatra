@@ -2,7 +2,7 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	22.04.2
+Version:	22.07.90
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -46,7 +46,7 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_datadir}/qlogging-categories5/kleopatra.renamecategories
 %{_bindir}/kleopatra
 %{_bindir}/kwatchgnupg
-%{_qt5_plugindir}/pim/kcms/kleopatra/kleopatra_config_gnupgsystem.so
+%{_qt5_plugindir}/pim5/kcms/kleopatra/kleopatra_config_gnupgsystem.so
 %{_datadir}/kio/servicemenus/kleopatra_decryptverifyfiles.desktop
 %{_datadir}/kio/servicemenus/kleopatra_decryptverifyfolders.desktop
 %{_datadir}/kio/servicemenus/kleopatra_signencryptfiles.desktop
@@ -58,7 +58,6 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_iconsdir}/*/*/*/*
 %{_datadir}/kconf_update/*
 %{_datadir}/kleopatra
-%{_datadir}/kservices5/*.desktop
 %{_datadir}/kwatchgnupg
 %{_docdir}/HTML/*/kleopatra
 %{_docdir}/HTML/*/kwatchgnupg
@@ -120,6 +119,11 @@ based on %{name}.
 
 %prep
 %autosetup -p1
+# FIXME differences in interpreting C++20 changes result in
+# an incompatibility between clang and libstdc++ parts used
+# in kleopatra, resulting in a build failure.
+export CC=gcc
+export CXX=g++
 %cmake_kde5
 
 %build
