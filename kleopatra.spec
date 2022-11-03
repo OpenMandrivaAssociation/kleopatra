@@ -2,8 +2,8 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	22.08.2
-Release:	2
+Version:	22.08.3
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
