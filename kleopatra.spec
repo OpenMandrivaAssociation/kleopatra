@@ -3,7 +3,7 @@
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
 Version:	23.04.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
@@ -29,6 +29,9 @@ BuildRequires:	cmake(KF5Libkleo)
 BuildRequires:	cmake(KF5Mime)
 BuildRequires:	cmake(KF5Notifications)
 BuildRequires:	cmake(KF5TextWidgets)
+BuildRequires:	cmake(KPim5IdentityManagement)
+BuildRequires:	cmake(KPim5MailTransport)
+BuildRequires:	cmake(KPim5MailTransportAkonadi)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Test)
@@ -36,6 +39,7 @@ BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5PrintSupport)
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libassuan)
+BuildRequires:	pkgconfig(shared-mime-info)
 Obsoletes:	%{name}-handbook < 3:16.08.3-1
 Requires:	pinentry-qt5
 Requires:	ksshaskpass
