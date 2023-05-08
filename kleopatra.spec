@@ -1,9 +1,9 @@
-%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+%define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
 Version:	23.04.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
@@ -35,8 +35,10 @@ BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5PrintSupport)
 BuildRequires:	boost-devel
-BuildRequires:	libassuan-devel
+BuildRequires:	pkgconfig(libassuan)
 Obsoletes:	%{name}-handbook < 3:16.08.3-1
+Requires:	pinentry-qt5
+Requires:	ksshaskpass
 
 %description
 Certificate manager and GUI for OpenPGP and CMS cryptography.
@@ -59,8 +61,8 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_datadir}/kconf_update/*
 %{_datadir}/kleopatra
 %{_datadir}/kwatchgnupg
-%{_docdir}/HTML/*/kleopatra
-%{_docdir}/HTML/*/kwatchgnupg
+%doc %{_docdir}/HTML/*/kleopatra
+%doc %{_docdir}/HTML/*/kwatchgnupg
 
 #--------------------------------------------------------------------
 
