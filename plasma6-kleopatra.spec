@@ -45,7 +45,6 @@ BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6QmlCore)
 BuildRequires:  cmake(Qt6QmlNetwork)
 BuildRequires:  qt6-qtbase-theme-gtk3
-BuildRequires:	qml(org.kde.pim.mimetreeparser)
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libassuan)
 BuildRequires:	pkgconfig(shared-mime-info)
