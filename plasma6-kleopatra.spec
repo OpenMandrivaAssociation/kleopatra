@@ -2,7 +2,7 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		plasma6-kleopatra
-Version:	24.01.85
+Version:	24.01.90
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -25,12 +25,13 @@ BuildRequires:	cmake(KF6DocTools)
 BuildRequires:	cmake(KF6DBusAddons)
 BuildRequires:	cmake(Gpgmepp)
 BuildRequires:	cmake(QGpgme)
-BuildRequires:	cmake(KF6Libkleo)
-BuildRequires:	cmake(KF6Mime)
+BuildRequires:	cmake(KPim6Libkleo)
+BuildRequires:	cmake(KPim6Mime)
 BuildRequires:	cmake(KF6Notifications)
 BuildRequires:	cmake(KF6TextWidgets)
-BuildRequires:	cmake(KPim6IdentityManagement)
+BuildRequires:	cmake(KPim6IdentityManagementCore)
 BuildRequires:	cmake(KPim6MailTransport)
+BuildRequires:	cmake(KPim6MimeTreeParserWidgets)
 BuildRequires:	pkgconfig(Qt6Core)
 BuildRequires:	pkgconfig(Qt6Widgets)
 BuildRequires:	pkgconfig(Qt6Test)
@@ -123,12 +124,12 @@ based on %{name}.
 #--------------------------------------------------------------------
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n kleopatra-%{version}
 # FIXME differences in interpreting C++20 changes result in
 # an incompatibility between clang and libstdc++ parts used
 # in kleopatra, resulting in a build failure.
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
