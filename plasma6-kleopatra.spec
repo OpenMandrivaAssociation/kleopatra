@@ -132,11 +132,6 @@ based on %{name}.
 
 %prep
 %autosetup -p1 -n kleopatra-%{version}
-
-# Just debugging
-rpm -qa |grep -i mimetree
-ls -l %{_libdir}/libKPim6MimeTree*
-
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
