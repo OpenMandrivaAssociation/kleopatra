@@ -55,11 +55,13 @@ Requires:	ksshaskpass
 Certificate manager and GUI for OpenPGP and CMS cryptography.
 
 %files -f all.lang
+%{_datadir}/applications/org.kde.kwatchgnupg.desktop
+%{_datadir}/mime/packages/kleopatra-mime.xml
 %{_datadir}/qlogging-categories6/kleopatra.categories
 %{_datadir}/qlogging-categories6/kleopatra.renamecategories
 %{_bindir}/kleopatra
 %{_bindir}/kwatchgnupg
-%{_qt6_plugindir}/pim6/kcms/kleopatra/kleopatra_config_gnupgsystem.so
+%{_qtdir}/plugins/pim6/kcms/kleopatra/kleopatra_config_gnupgsystem.so
 %{_datadir}/kio/servicemenus/kleopatra_decryptverifyfiles.desktop
 %{_datadir}/kio/servicemenus/kleopatra_decryptverifyfolders.desktop
 %{_datadir}/kio/servicemenus/kleopatra_signencryptfiles.desktop
@@ -74,64 +76,18 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_datadir}/kwatchgnupg
 %doc %{_docdir}/HTML/*/kleopatra
 %doc %{_docdir}/HTML/*/kwatchgnupg
-
-#--------------------------------------------------------------------
-
-%define kleopatraclientcore_major 1
-%define libkleopatraclientcore %mklibname kleopatraclientcore %{kleopatraclientcore_major}
-
-%package -n %{libkleopatraclientcore}
-Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
-Group:		System/Libraries
-Obsoletes:	%{mklibname kf6kleopatraclientcore 1} < 3:17.04.0
-
-%description -n %{libkleopatraclientcore}
-Certificate manager and GUI for OpenPGP and CMS cryptography.
-
-%files -n %{libkleopatraclientcore}
-%_libdir/libkleopatraclientcore.so.%{kleopatraclientcore_major}*
-
-#--------------------------------------------------------------------
-
-%define kleopatraclientgui_major 1
-%define libkleopatraclientgui %mklibname kleopatraclientgui %{kleopatraclientgui_major}
-
-%package -n %{libkleopatraclientgui}
-Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
-Group:		System/Libraries
-Obsoletes:	%{mklibname kf6kleopatraclientgui 1} < 3:17.04.0
-
-%description -n %{libkleopatraclientgui}
-Certificate manager and GUI for OpenPGP and CMS cryptography.
-
-%files -n %{libkleopatraclientgui}
-%{_libdir}/libkleopatraclientgui.so.%{kleopatraclientgui_major}*
-
-#--------------------------------------------------------------------
-
-%define libkleopatra_devel %mklibname libkleopatra -d
-
-%package -n %{libkleopatra_devel}
-
-Summary:	Devel stuff for %{name}
-Group:		Development/KDE and Qt
-Requires:	%{libkleopatraclientcore} = %{EVRD}
-Requires:	%{libkleopatraclientgui} = %{EVRD}
-Requires:	%{name} = %{EVRD}
-Provides:	%{name}-devel = %{EVRD}
-Obsoletes:	%{mklibname kf6libkleopatra -d} < 3:17.04.0
-
-%description -n %{libkleopatra_devel}
-This package contains header files needed if you wish to build applications
-based on %{name}.
-
-%files -n %{libkleopatra_devel}
-%{_libdir}/*.so
+%{_libdir}/libkleopatraclientcore.so.*
+%{_libdir}/libkleopatraclientgui.so.*
 
 #--------------------------------------------------------------------
 
 %prep
 %autosetup -p1 -n kleopatra-%{version}
+# FIXME workaround for compile time error with clang
+# src/accessibility/accessiblevaluelabel.cpp:21:48: error: integer value 65536 is outside the valid range of values [0, 65535] for the enumeration type 'Role' [-Wenum-constexpr-conversion]
+export CC=gcc
+export CXX=g++
+export LD=g++
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
@@ -142,7 +98,7 @@ based on %{name}.
 %install
 %ninja_install -C build
 
-%find_lang %{name}
+%find_lang kleopatra
 %find_lang kwatchgnupg
 
 cat *.lang >all.lang
