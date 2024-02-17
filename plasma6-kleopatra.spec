@@ -1,12 +1,19 @@
+%define git 20240217
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		plasma6-kleopatra
-Version:	24.01.95
-Release:	1
+Version:	24.01.96
+Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/pim/kleopatra/-/archive/%{gitbranch}/kleopatra-%{gitbranchd}.tar.bz2#/kleopatra-%{git}.tar.bz2
+%else
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/kleopatra-%{version}.tar.xz
+%endif
 URL:		https://www.kde.org/
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF6KCMUtils)
@@ -82,7 +89,7 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 #--------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n kleopatra-%{version}
+%autosetup -p1 -n kleopatra-%{?git:%{gitbranchd}}%{!?git:%{version}}
 # FIXME workaround for compile time error with clang
 # src/accessibility/accessiblevaluelabel.cpp:21:48: error: integer value 65536 is outside the valid range of values [0, 65535] for the enumeration type 'Role' [-Wenum-constexpr-conversion]
 export CC=gcc
