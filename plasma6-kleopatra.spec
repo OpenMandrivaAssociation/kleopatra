@@ -6,7 +6,7 @@
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		plasma6-kleopatra
 Version:	24.01.96
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 %if 0%{?git:1}
@@ -56,7 +56,7 @@ BuildRequires:	pkgconfig(libassuan)
 BuildRequires:	pkgconfig(shared-mime-info)
 Obsoletes:	%{name}-handbook < 3:16.08.3-1
 Requires:	pinentry-qt6
-Requires:	ksshaskpass
+Requires:	plasma6-ksshaskpass
 
 %description
 Certificate manager and GUI for OpenPGP and CMS cryptography.
