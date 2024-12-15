@@ -5,8 +5,8 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		plasma6-kleopatra
-Version:	24.08.3
-Release:	%{?git:0.%{git}.}2
+Version:	24.12.0
+Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 %if 0%{?git:1}
@@ -62,6 +62,7 @@ Requires:	plasma6-ksshaskpass
 Certificate manager and GUI for OpenPGP and CMS cryptography.
 
 %files -f all.lang
+%{_sysconfdir}/xdg/kleopatradebugcommandsrc
 %{_datadir}/applications/org.kde.kwatchgnupg.desktop
 %{_datadir}/mime/packages/kleopatra-mime.xml
 %{_datadir}/qlogging-categories6/kleopatra.categories
@@ -78,8 +79,6 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_datadir}/applications/kleopatra_import.desktop
 %{_datadir}/applications/org.kde.kleopatra.desktop
 %{_iconsdir}/*/*/*/*
-%{_datadir}/kleopatra
-%{_datadir}/kwatchgnupg
 %doc %{_docdir}/HTML/*/kleopatra
 %doc %{_docdir}/HTML/*/kwatchgnupg
 %{_libdir}/libkleopatraclientcore.so.*
