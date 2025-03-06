@@ -5,7 +5,7 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		plasma6-kleopatra
-Version:	24.12.2
+Version:	24.12.3
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
