@@ -5,8 +5,8 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		plasma6-kleopatra
-Version:	24.12.3
-Release:	%{?git:0.%{git}.}3
+Version:	25.04.0
+Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 %if 0%{?git:1}
@@ -69,20 +69,16 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_datadir}/qlogging-categories6/kleopatra.renamecategories
 %{_bindir}/kleopatra
 %{_bindir}/kwatchgnupg
-%{_qtdir}/plugins/pim6/kcms/kleopatra/kleopatra_config_gnupgsystem.so
-%{_datadir}/kio/servicemenus/kleopatra_decryptverifyfiles.desktop
-%{_datadir}/kio/servicemenus/kleopatra_decryptverifyfolders.desktop
 %{_datadir}/kio/servicemenus/kleopatra_signencryptfiles.desktop
 %{_datadir}/kio/servicemenus/kleopatra_signencryptfolders.desktop
 %{_datadir}/mime/packages/application-vnd-kde-kleopatra.xml
 %{_datadir}/metainfo/org.kde.kleopatra.appdata.xml
 %{_datadir}/applications/kleopatra_import.desktop
 %{_datadir}/applications/org.kde.kleopatra.desktop
+%{_datadir}/kio/servicemenus/kleopatra_decryptverifyfiles.desktop
 %{_iconsdir}/*/*/*/*
 %doc %{_docdir}/HTML/*/kleopatra
 %doc %{_docdir}/HTML/*/kwatchgnupg
-%{_libdir}/libkleopatraclientcore.so.*
-%{_libdir}/libkleopatraclientgui.so.*
 
 #--------------------------------------------------------------------
 
