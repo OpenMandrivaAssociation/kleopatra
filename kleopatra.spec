@@ -5,7 +5,7 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	25.04.0
+Version:	25.04.3
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -58,10 +58,18 @@ Obsoletes:	%{name}-handbook < 3:16.08.3-1
 Requires:	pinentry-qt6
 Requires:	plasma6-ksshaskpass
 
+%rename plasma6-kleopatra
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
+%patchlist
+kleopatra-gpgme-2.0.patch
+
 %description
 Certificate manager and GUI for OpenPGP and CMS cryptography.
 
-%files -f all.lang
+%files -f %{name}.lang
 %{_sysconfdir}/xdg/kleopatradebugcommandsrc
 %{_datadir}/applications/org.kde.kwatchgnupg.desktop
 %{_datadir}/mime/packages/kleopatra-mime.xml
@@ -77,29 +85,3 @@ Certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_datadir}/applications/org.kde.kleopatra.desktop
 %{_datadir}/kio/servicemenus/kleopatra_decryptverifyfiles.desktop
 %{_iconsdir}/*/*/*/*
-%doc %{_docdir}/HTML/*/kleopatra
-%doc %{_docdir}/HTML/*/kwatchgnupg
-
-#--------------------------------------------------------------------
-
-%prep
-%autosetup -p1 -n kleopatra-%{?git:%{gitbranchd}}%{!?git:%{version}}
-# FIXME workaround for compile time error with clang
-# src/accessibility/accessiblevaluelabel.cpp:21:48: error: integer value 65536 is outside the valid range of values [0, 65535] for the enumeration type 'Role' [-Wenum-constexpr-conversion]
-export CC=gcc
-export CXX=g++
-export LD=g++
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja -C build
-
-%install
-%ninja_install -C build
-
-%find_lang kleopatra
-%find_lang kwatchgnupg
-
-cat *.lang >all.lang

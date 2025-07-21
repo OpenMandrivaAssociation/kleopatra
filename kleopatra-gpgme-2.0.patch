@@ -1,0 +1,59 @@
+diff -up kleopatra-25.04.3/src/crypto/signencrypttask.cpp.omv~ kleopatra-25.04.3/src/crypto/signencrypttask.cpp
+--- kleopatra-25.04.3/src/crypto/signencrypttask.cpp.omv~	2025-07-21 19:38:00.662401709 +0200
++++ kleopatra-25.04.3/src/crypto/signencrypttask.cpp	2025-07-21 19:39:06.930824199 +0200
+@@ -1009,8 +1009,8 @@ QString SignEncryptFilesResult::overview
+                             m_output.label,
+                             !m_sresult.isNull(),
+                             !m_eresult.isNull(),
+-                            m_sresult.error(),
+-                            m_eresult.error(),
++                            !m_sresult.error().isSuccess(),
++                            !m_eresult.error().isSuccess(),
+                             m_sresult.error().code() ? m_sresult.error() : m_eresult.error());
+ }
+ 
+diff -up kleopatra-25.04.3/src/dialogs/useridswidget.cpp.omv~ kleopatra-25.04.3/src/dialogs/useridswidget.cpp
+--- kleopatra-25.04.3/src/dialogs/useridswidget.cpp.omv~	2025-07-21 19:35:27.785859574 +0200
++++ kleopatra-25.04.3/src/dialogs/useridswidget.cpp	2025-07-21 19:36:15.021526559 +0200
+@@ -285,7 +285,7 @@ void UserIdsWidget::Private::setUpUserID
+         QStringList tagList;
+         for (const auto &tag : uid.remarks(Tags::tagKeys(), err)) {
+             if (err) {
+-                qCWarning(KLEOPATRA_LOG) << "Getting remarks for user ID" << uid.id() << "failed:" << err;
++                qCWarning(KLEOPATRA_LOG) << "Getting remarks for user ID" << uid.id() << "failed:" << err.asStdString();
+             }
+             tagList << QString::fromStdString(tag);
+         }
+diff -up kleopatra-25.04.3/src/selftest/gpgagentcheck.cpp.omv~ kleopatra-25.04.3/src/selftest/gpgagentcheck.cpp
+--- kleopatra-25.04.3/src/selftest/gpgagentcheck.cpp.omv~	2025-07-21 19:39:33.233266172 +0200
++++ kleopatra-25.04.3/src/selftest/gpgagentcheck.cpp	2025-07-21 19:39:57.919319423 +0200
+@@ -37,7 +37,7 @@ public:
+     {
+         m_skipped = true;
+ 
+-        if (!hasFeature(AssuanEngineFeature, 0)) {
++/*        if (!hasFeature(AssuanEngineFeature, 0)) {
+             m_error = i18n("GpgME library too old");
+             m_explanation = i18nc("@info",
+                                   "Either the GpgME library itself is too old, "
+@@ -46,7 +46,7 @@ public:
+             m_proposedFix = xi18nc("@info",
+                                    "Upgrade to <application>gpgme</application> 1.2.0 or higher, "
+                                    "and ensure that gpgme++ was compiled against it.");
+-        } else if (ensureEngineVersion(GpgME::GpgConfEngine, 2, 1, 0)) {
++        } else */ if (ensureEngineVersion(GpgME::GpgConfEngine, 2, 1, 0)) {
+             // 2.1 starts the agent on demand and requires it. So for 2.1.0 we can assume
+             // autostart works and we don't need to care about the agent.
+             m_skipped = false;
+diff -up kleopatra-25.04.3/src/view/cardkeysview.cpp.omv~ kleopatra-25.04.3/src/view/cardkeysview.cpp
+--- kleopatra-25.04.3/src/view/cardkeysview.cpp.omv~	2025-07-21 19:37:12.417716994 +0200
++++ kleopatra-25.04.3/src/view/cardkeysview.cpp	2025-07-21 19:37:18.585329738 +0200
+@@ -720,7 +720,7 @@ void CardKeysView::certificateValidation
+ {
+     qCDebug(KLEOPATRA_LOG) << __func__ << "certificates:" << validatedCertificates;
+     if (result.error()) {
+-        qCDebug(KLEOPATRA_LOG) << __func__ << "Validating certificates failed:" << result.error();
++        qCDebug(KLEOPATRA_LOG) << __func__ << "Validating certificates failed:" << result.error().asStdString();
+         return;
+     }
+     // replace the current certificates with the validated certificates
