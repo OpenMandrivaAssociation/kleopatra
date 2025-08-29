@@ -5,7 +5,7 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	25.04.3
+Version:	25.08.0
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -64,7 +64,7 @@ BuildSystem:	cmake
 BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %patchlist
-kleopatra-gpgme-2.0.patch
+#kleopatra-gpgme-2.0.patch
 
 %description
 Certificate manager and GUI for OpenPGP and CMS cryptography.
