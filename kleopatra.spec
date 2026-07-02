@@ -5,7 +5,7 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	26.04.2
+Version:	26.04.3
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
