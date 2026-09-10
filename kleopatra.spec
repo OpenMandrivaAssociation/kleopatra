@@ -5,7 +5,7 @@
 
 Summary:	Certificate manager and GUI for OpenPGP and CMS cryptography
 Name:		kleopatra
-Version:	26.08.0
+Version:	26.08.1
 Release:	%{?git:0.%{git}.}1
 # cmake configs still contain a dead KPim6Mime fallback
 %global __requires_exclude cmake\\(KPim6Mime\\)|cmake\\(kpim6mime\\)
